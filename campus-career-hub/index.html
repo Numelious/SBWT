@@ -1,246 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Campus Career Hub — Build Your Skills. Discover Opportunities.</title>
 
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<!-- Custom -->
-<link rel="stylesheet" href="css/style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Career Hub — Build Your Skills. Discover Opportunities.</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- Custom -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<!-- ===================== NAVBAR ===================== -->
-<nav class="navbar navbar-expand-lg navbar-ccb sticky-top">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">Campus <span>Career</span> Hub</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ccbNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="ccbNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="opportunities.html">Opportunities</a></li>
-        <li class="nav-item"><a class="nav-link" href="my-career.html">My Career</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact &amp; Feedback</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- ===================== HERO ===================== -->
-<header class="hero">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-7">
-        <p class="eyebrow mb-3" style="color:#F2A93B;">Campus Career Hub</p>
-        <h1 class="mb-3">Your Career Journey<br>Starts Here.</h1>
-        <p class="lead-text mb-4">
-          Discover internships and jobs, build a professional profile that actually reflects your
-          skills and projects, and keep everything organised in one place — built for students, by students.
-        </p>
-        <div class="d-flex flex-wrap gap-3">
-          <a href="opportunities.html" class="btn btn-ccb-primary">Explore Opportunities</a>
-          <a href="my-career.html" class="btn btn-ccb-outline">Build My Career</a>
-        </div>
-
-        <!-- Signature element: literal career pathway -->
-        <div class="pathway">
-          <div class="pathway-stop">
-            <div class="pathway-dot"></div>
-            <div class="pathway-label">Student</div>
-          </div>
-          <div class="pathway-stop">
-            <div class="pathway-dot"></div>
-            <div class="pathway-label">Profile</div>
-          </div>
-          <div class="pathway-stop">
-            <div class="pathway-dot"></div>
-            <div class="pathway-label">Opportunities</div>
-          </div>
-          <div class="pathway-stop is-end">
-            <div class="pathway-dot"></div>
-            <div class="pathway-label">Career</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-5 d-none d-lg-block text-center">
-        <img src="images/hero-illustration.png"
-             alt="Campus Career Hub illustration" class="img-fluid hero-illustration-img">
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- ===================== FEATURED OPPORTUNITIES ===================== -->
-<section class="section bg-cream">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
-      <div>
-        <p class="eyebrow">Fresh off the API</p>
-        <h2 class="section-title mb-0">Featured Opportunities</h2>
-      </div>
-      <a href="opportunities.html" class="btn btn-teal">See All Opportunities <i class="bi bi-arrow-right"></i></a>
-    </div>
-
-    <div id="featuredOppLoading" class="spinner-ccb"></div>
-    <div id="featuredOppError" class="alert alert-warning d-none" role="alert"></div>
-    <div id="featuredOppGrid" class="row g-4"></div>
-  </div>
-</section>
-
-<!-- ===================== HOW IT WORKS ===================== -->
-<section class="section bg-paper">
-  <div class="container">
-    <p class="eyebrow">The Process</p>
-    <h2 class="section-title mb-4">How It Works</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="step-card shadow-sm h-100">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <div class="step-number">01 — PROFILE</div>
-            <i class="bi bi-person-vcard text-amber fs-3"></i>
-          </div>
-          <h4 class="mb-2">Build Your Profile</h4>
-          <p class="text-slate mb-0">Add your education, skills, projects and certifications in one organised place.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="step-card shadow-sm h-100">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <div class="step-number">02 — SEARCH</div>
-            <i class="bi bi-search-heart text-amber fs-3"></i>
-          </div>
-          <h4 class="mb-2">Discover Opportunities</h4>
-          <p class="text-slate mb-0">Search and filter relevant jobs and internships pulled live from The Muse.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="step-card shadow-sm h-100">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <div class="step-number">03 — PREPARE</div>
-            <i class="bi bi-rocket-takeoff text-amber fs-3"></i>
-          </div>
-          <h4 class="mb-2">Prepare for Your Career</h4>
-          <p class="text-slate mb-0">Keep your professional information organised and ready to share, anytime.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== QUICK STATISTICS ===================== -->
-<section class="section bg-cream">
-  <div class="container">
-    <div class="stats-strip">
-      <div class="row text-center g-4">
-        <div class="col-6 col-md-3">
-          <div class="stat-number" id="statOpportunities">—</div>
-          <div class="stat-label">Opportunities available</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="stat-number" id="statCategories">—</div>
-          <div class="stat-label">Categories supported</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="stat-number" id="statSkills">—</div>
-          <div class="stat-label">Skills registered</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="stat-number" id="statRating">—</div>
-          <div class="stat-label">Average user rating</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== REVIEWS ===================== -->
-<section class="section bg-paper">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
-      <div>
-        <p class="eyebrow">What Students Say</p>
-        <h2 class="section-title mb-0">Student Reviews</h2>
-      </div>
-      <button class="btn btn-teal" data-bs-toggle="modal" data-bs-target="#allReviewsModal">
-        View All Reviews
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar navbar-expand-lg navbar-ccb sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Campus <span>Career</span> Hub</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ccbNav">
+        <span class="navbar-toggler-icon"></span>
       </button>
-    </div>
-    <div id="latestReviewsGrid" class="row g-4"></div>
-    <div class="text-center mt-4">
-      <a href="contact.html#review" class="btn btn-ccb-primary">Leave a Review</a>
-    </div>
-  </div>
-</section>
-
-<!-- All reviews modal -->
-<div class="modal fade" id="allReviewsModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title display-font">All Student Reviews</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div id="allReviewsList" class="row g-3"></div>
+      <div class="collapse navbar-collapse" id="ccbNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="opportunities.html">Opportunities</a></li>
+          <li class="nav-item"><a class="nav-link" href="my-career.html">My Career</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact &amp; Feedback</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-</div>
+  </nav>
 
-<!-- ===================== FOOTER ===================== -->
-<footer class="footer-ccb">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-md-5">
-        <h6 class="mb-2">Campus Career Hub</h6>
-        <p class="mb-0 small">A student-built platform to discover opportunities, manage your career profile, and grow — aligned with SDG 4 (Quality Education) and SDG 8 (Decent Work &amp; Economic Growth).</p>
-        <div class="d-flex gap-2 mt-3">
-          <span class="badge-sdg">SDG 4</span>
-          <span class="badge-sdg">SDG 8</span>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <p class="eyebrow mb-3" style="color:#F2A93B;">Campus Career Hub</p>
+          <h1 class="mb-3">Your Career Journey<br>Starts Here.</h1>
+          <p class="lead-text mb-4">
+            Discover internships and jobs, build a professional profile that actually reflects your
+            skills and projects, and keep everything organised in one place — built for students, by students.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="opportunities.html" class="btn btn-ccb-primary">Explore Opportunities</a>
+            <a href="my-career.html" class="btn btn-ccb-outline">Build My Career</a>
+          </div>
+
+          <!-- Signature element: literal career pathway -->
+          <div class="pathway">
+            <div class="pathway-stop">
+              <div class="pathway-dot"></div>
+              <div class="pathway-label">Student</div>
+            </div>
+            <div class="pathway-stop">
+              <div class="pathway-dot"></div>
+              <div class="pathway-label">Profile</div>
+            </div>
+            <div class="pathway-stop">
+              <div class="pathway-dot"></div>
+              <div class="pathway-label">Opportunities</div>
+            </div>
+            <div class="pathway-stop is-end">
+              <div class="pathway-dot"></div>
+              <div class="pathway-label">Career</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block text-center">
+          <img src="images/hero-illustration.png" alt="Campus Career Hub illustration"
+            class="img-fluid hero-illustration-img">
         </div>
       </div>
-      <div class="col-md-3">
-        <h6 class="mb-2">Explore</h6>
-        <ul class="list-unstyled small">
-          <li class="mb-1"><a href="index.html">Home</a></li>
-          <li class="mb-1"><a href="opportunities.html">Opportunities</a></li>
-          <li class="mb-1"><a href="my-career.html">My Career</a></li>
-          <li class="mb-1"><a href="contact.html">Contact &amp; Feedback</a></li>
-        </ul>
+    </div>
+  </header>
+
+  <!-- ===================== FEATURED OPPORTUNITIES ===================== -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+        <div>
+          <p class="eyebrow">Fresh off the API</p>
+          <h2 class="section-title mb-0">Featured Opportunities</h2>
+        </div>
+        <a href="opportunities.html" class="btn btn-teal">See All Opportunities <i class="bi bi-arrow-right"></i></a>
       </div>
-      <div class="col-md-4">
-        <h6 class="mb-2">Built By</h6>
-        <ul class="list-unstyled small mb-0">
-          <li class="mb-2">
-            <a class="credit-name" href="https://www.linkedin.com/in/param-patel-6a5568392/" target="_blank" rel="noopener noreferrer">
-              Param Patel <i class="bi bi-linkedin"></i>
-            </a>
-          </li>
-          <li class="mb-2">
-            <a class="credit-name" href="https://www.linkedin.com/in/atharv-patil-276253386/" target="_blank" rel="noopener noreferrer">
-              Atharv Patil <i class="bi bi-linkedin"></i>
-            </a>
-          </li>
-        </ul>
+
+      <div id="featuredOppLoading" class="spinner-ccb"></div>
+      <div id="featuredOppError" class="alert alert-warning d-none" role="alert"></div>
+      <div id="featuredOppGrid" class="row g-4"></div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="section bg-paper">
+    <div class="container">
+      <p class="eyebrow">The Process</p>
+      <h2 class="section-title mb-4">How It Works</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="step-card shadow-sm h-100">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="step-number">01 — PROFILE</div>
+              <i class="bi bi-person-vcard text-amber fs-3"></i>
+            </div>
+            <h4 class="mb-2">Build Your Profile</h4>
+            <p class="text-slate mb-0">Add your education, skills, projects and certifications in one organised place.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="step-card shadow-sm h-100">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="step-number">02 — SEARCH</div>
+              <i class="bi bi-search-heart text-amber fs-3"></i>
+            </div>
+            <h4 class="mb-2">Discover Opportunities</h4>
+            <p class="text-slate mb-0">Search and filter relevant jobs and internships pulled live from The Muse.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="step-card shadow-sm h-100">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="step-number">03 — PREPARE</div>
+              <i class="bi bi-rocket-takeoff text-amber fs-3"></i>
+            </div>
+            <h4 class="mb-2">Prepare for Your Career</h4>
+            <p class="text-slate mb-0">Keep your professional information organised and ready to share, anytime.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom text-center">
-      &copy; <span id="footerYear"></span> Campus Career Hub. Built with HTML, CSS, JavaScript &amp; Bootstrap.
+  </section>
+
+  <!-- ===================== QUICK STATISTICS ===================== -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="stats-strip">
+        <div class="row text-center g-4">
+          <div class="col-6 col-md-3">
+            <div class="stat-number" id="statOpportunities">—</div>
+            <div class="stat-label">Opportunities available</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-number" id="statCategories">—</div>
+            <div class="stat-label">Categories supported</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-number" id="statSkills">—</div>
+            <div class="stat-label">Skills registered</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-number" id="statRating">—</div>
+            <div class="stat-label">Average user rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REVIEWS ===================== -->
+  <section class="section bg-paper">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+        <div>
+          <p class="eyebrow">What Students Say</p>
+          <h2 class="section-title mb-0">Student Reviews</h2>
+        </div>
+        <button class="btn btn-teal" data-bs-toggle="modal" data-bs-target="#allReviewsModal">
+          View All Reviews
+        </button>
+      </div>
+      <div id="latestReviewsGrid" class="row g-4"></div>
+      <div class="text-center mt-4">
+        <a href="contact.html#review" class="btn btn-ccb-primary">Leave a Review</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- All reviews modal -->
+  <div class="modal fade" id="allReviewsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title display-font">All Student Reviews</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="allReviewsList" class="row g-3"></div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/storage.js"></script>
-<script src="js/main.js"></script>
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer-ccb">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <h6 class="mb-2">Campus Career Hub</h6>
+          <p class="mb-0 small">A student-built platform to discover opportunities, manage your career profile, and grow
+            — aligned with SDG 4 (Quality Education) and SDG 8 (Decent Work &amp; Economic Growth).</p>
+          <div class="d-flex gap-2 mt-3">
+            <span class="badge-sdg">SDG 4</span>
+            <span class="badge-sdg">SDG 8</span>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h6 class="mb-2">Built By</h6>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-2">
+              <a class="credit-name" href="https://www.linkedin.com/in/param-patel-6a5568392/" target="_blank"
+                rel="noopener noreferrer">
+                Param Patel <i class="bi bi-linkedin"></i>
+              </a>
+            </li>
+            <li class="mb-2">
+              <a class="credit-name" href="https://www.linkedin.com/in/atharv-patil-276253386/" target="_blank"
+                rel="noopener noreferrer">
+                Atharv Patil <i class="bi bi-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        &copy; <span id="footerYear"></span> Campus Career Hub. Built with HTML, CSS, JavaScript &amp; Bootstrap.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>
