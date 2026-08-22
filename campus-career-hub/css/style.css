@@ -1,0 +1,572 @@
+/* ===========================================================
+   Campus Career Hub — Design Tokens
+   =========================================================== */
+:root{
+  --navy:        #0B1F3A;
+  --navy-soft:   #12294F;
+  --cream:       #F7F4EC;
+  --paper:       #FFFDF8;
+  --amber:       #F2A93B;
+  --amber-dark:  #D68C1F;
+  --teal:        #1E6E73;
+  --teal-soft:   #E4F1F1;
+  --slate:       #55647A;
+  --line:        #DDD6C4;
+  --ok:          #2E7D4F;
+  --error:       #C4432B;
+
+  --font-display: 'Fraunces', serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --radius: 14px;
+  --shadow-soft: 0 10px 30px -12px rgba(11,31,58,0.25);
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  font-family: var(--font-body);
+  color: var(--navy);
+  background: var(--cream);
+  line-height: 1.6;
+}
+
+h1,h2,h3,h4,.display-font{
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a{ color: var(--teal); text-decoration: none; }
+a:hover{ color: var(--amber-dark); }
+
+.eyebrow{
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.text-slate{ color: var(--slate); }
+
+/* focus visibility */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible{
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* ===========================================================
+   Navbar
+   =========================================================== */
+.navbar-ccb{
+  background: var(--navy);
+  padding: 0.9rem 0;
+  border-bottom: 3px solid var(--amber);
+}
+.navbar-ccb .navbar-brand{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--paper);
+}
+.navbar-ccb .navbar-brand span{ color: var(--amber); }
+.navbar-ccb .nav-link{
+  color: rgba(247,244,236,0.78);
+  font-weight: 500;
+  margin: 0 0.35rem;
+  padding: 0.4rem 0.7rem !important;
+  border-radius: 8px;
+  transition: all .15s ease;
+}
+.navbar-ccb .nav-link:hover{
+  color: var(--paper);
+  background: rgba(242,169,59,0.14);
+}
+.navbar-ccb .nav-link.active{
+  color: var(--navy);
+  background: var(--amber);
+  font-weight: 600;
+}
+.navbar-ccb .navbar-toggler{
+  border-color: rgba(247,244,236,0.4);
+}
+
+/* ===========================================================
+   Buttons
+   =========================================================== */
+.btn-ccb-primary{
+  background: var(--amber);
+  border: none;
+  color: var(--navy);
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-ccb-primary:hover{
+  background: var(--amber-dark);
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+.btn-ccb-outline{
+  background: transparent;
+  border: 2px solid var(--paper);
+  color: var(--paper);
+  font-weight: 600;
+  padding: 0.65rem 1.45rem;
+  border-radius: 999px;
+  transition: all .15s ease;
+}
+.btn-ccb-outline:hover{
+  background: var(--paper);
+  color: var(--navy);
+}
+.btn-teal{
+  background: var(--teal);
+  color: var(--paper);
+  border: none;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.6rem 1.3rem;
+}
+.btn-teal:hover{ background: #16545a; color: var(--paper); }
+
+/* ===========================================================
+   Hero + Career Pathway signature
+   =========================================================== */
+.hero{
+  background: radial-gradient(circle at 15% 20%, rgba(242,169,59,0.16), transparent 45%),
+              linear-gradient(180deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: var(--paper);
+  padding: 5.5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero h1{
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  line-height: 1.08;
+}
+.hero .lead-text{
+  color: rgba(247,244,236,0.82);
+  font-size: 1.12rem;
+  max-width: 46ch;
+}
+
+/* the "pathway" — a literal stepped road from Student to Career */
+.pathway{
+  margin-top: 3.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+.pathway::before{
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 2px;
+  background: repeating-linear-gradient(to right, rgba(242,169,59,0.55) 0 10px, transparent 10px 20px);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+.pathway-stop{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+.pathway-dot{
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 3px solid var(--amber);
+  margin-bottom: 0.6rem;
+}
+.pathway-stop.is-end .pathway-dot{
+  width: 20px; height: 20px;
+  background: var(--amber);
+}
+.pathway-label{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(247,244,236,0.75);
+  text-transform: uppercase;
+}
+
+/* ===========================================================
+   Cards
+   =========================================================== */
+.card-ccb{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  height: 100%;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card-ccb:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.step-card{
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  height: 100%;
+  border-top: 4px solid var(--teal);
+}
+.step-number{
+  font-family: var(--font-mono);
+  color: var(--teal);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Opportunity card */
+.opp-card{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.opp-card .opp-company{
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.opp-card .opp-title{
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 0.15rem 0 0.6rem;
+}
+.opp-meta{
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--slate);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+.opp-meta span{
+  background: var(--teal-soft);
+  color: var(--teal);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+.opp-desc{
+  color: var(--slate);
+  font-size: 0.9rem;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Stats */
+.stats-strip{
+  background: var(--navy);
+  color: var(--paper);
+  border-radius: var(--radius);
+  padding: 2.2rem 1rem;
+}
+.stat-number{
+  font-family: var(--font-mono);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--amber);
+}
+.stat-label{
+  font-size: 0.82rem;
+  color: rgba(247,244,236,0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Reviews */
+.review-card{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  height: 100%;
+}
+.stars{ color: var(--amber); letter-spacing: 2px; }
+.review-name{ font-weight: 600; color: var(--navy); }
+
+/* ===========================================================
+   Section rhythm
+   =========================================================== */
+.section{ padding: 4.2rem 0; }
+.section-title{ font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.bg-paper{ background: var(--paper); }
+.bg-cream{ background: var(--cream); }
+
+/* ===========================================================
+   Forms
+   =========================================================== */
+.form-ccb label{
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.form-ccb .form-control, .form-ccb .form-select{
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  padding: 0.6rem 0.85rem;
+}
+.form-ccb .form-control:focus, .form-ccb .form-select:focus{
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(30,110,115,0.15);
+}
+.form-section-title{
+  font-family: var(--font-display);
+  border-left: 4px solid var(--amber);
+  padding-left: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+.invalid-feedback{ display: none; color: var(--error); font-size: 0.82rem; }
+.was-validated-ccb .is-invalid ~ .invalid-feedback,
+.is-invalid ~ .invalid-feedback{ display: block; }
+.is-invalid{ border-color: var(--error) !important; }
+.is-valid{ border-color: var(--ok) !important; }
+
+/* Skill tags */
+.skill-tag{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.9rem;
+  border-radius: 999px;
+}
+.skill-tag button{
+  background: none; border: none; color: var(--teal);
+  font-weight: 700; line-height: 1; cursor: pointer;
+}
+.skill-tag button:hover{ color: var(--error); }
+
+/* dynamic entry blocks (projects/certs/internships) */
+.entry-block{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--teal);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.entry-remove{
+  position: absolute;
+  top: 0.7rem; right: 0.7rem;
+  background: none;
+  border: none;
+  color: var(--error);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Star rating widget */
+.star-rating{ font-size: 2rem; display: inline-flex; gap: 0.25rem; }
+.star-rating .star{
+  cursor: pointer; color: var(--line); transition: color .1s ease;
+}
+.star-rating .star.filled{ color: var(--amber); }
+
+/* Saved pill */
+.save-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ok);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.save-pill.show{ opacity: 1; }
+
+/* Footer */
+.footer-ccb{
+  background: var(--navy);
+  color: rgba(247,244,236,0.75);
+  padding: 2.6rem 0 1.6rem;
+  margin-top: 3rem;
+}
+.footer-ccb h6{
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: var(--amber);
+}
+.footer-ccb a{ color: rgba(247,244,236,0.85); }
+.footer-ccb a:hover{ color: var(--amber); }
+.credit-name{
+  font-weight: 600;
+  color: var(--paper);
+  border-bottom: 1px dashed rgba(242,169,59,0.5);
+}
+.credit-name:hover{ color: var(--amber); border-color: var(--amber); }
+.footer-bottom{
+  border-top: 1px solid rgba(247,244,236,0.12);
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  font-size: 0.82rem;
+  color: rgba(247,244,236,0.55);
+}
+
+/* utility */
+.badge-sdg{
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.bg-teal-soft{ background: var(--teal-soft); }
+
+.spinner-ccb{
+  width: 2.5rem; height: 2.5rem;
+  border: 4px solid var(--line);
+  border-top-color: var(--amber);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 2rem auto;
+}
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+.empty-state{
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--slate);
+}
+
+/* Hero Images & Banners */
+.hero-illustration-img{
+  max-height: 400px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
+  transition: transform 0.3s ease;
+}
+.hero-illustration-img:hover{
+  transform: scale(1.02);
+}
+
+.hero-banner-img{
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Company Logo Avatar & Small Badges */
+.company-logo-avatar{
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  font-family: var(--font-display);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+
+.small-badge{
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+}
+
+/* Review Avatars */
+.review-avatar{
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--amber);
+  box-shadow: 0 4px 12px rgba(11,31,58,0.15);
+}
+
+/* Bookmark Button */
+.btn-bookmark{
+  background: rgba(11,31,58,0.05);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-bookmark:hover{
+  background: var(--amber);
+  color: var(--navy);
+  transform: scale(1.1);
+}
+.btn-bookmark.active{
+  background: var(--navy);
+}
+.text-amber{ color: var(--amber) !important; }
+
+/* Custom Tab Buttons */
+.btn-amber-active{
+  background: var(--amber) !important;
+  color: var(--navy) !important;
+  font-weight: 700 !important;
+  border-color: var(--amber) !important;
+}
+
+/* Job Details Modal Formatting */
+.job-contents-body{
+  color: var(--navy);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.job-contents-body h1, .job-contents-body h2, .job-contents-body h3, .job-contents-body h4{
+  font-size: 1.15rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--navy);
+}
+.job-contents-body ul{
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px){
+  .pathway{ flex-direction: column; gap: 1.4rem; }
+  .pathway::before{ display:none; }
+  .section{ padding: 3rem 0; }
+  .hero-illustration-img{ max-height: 280px; }
+}

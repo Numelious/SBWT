@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opportunities — Campus Career Hub</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg navbar-ccb sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Campus <span>Career</span> Hub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ccbNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="ccbNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="opportunities.html">Opportunities</a></li>
+        <li class="nav-item"><a class="nav-link" href="my-career.html">My Career</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact &amp; Feedback</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== PAGE HEADER ===================== -->
+<header class="hero py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <p class="eyebrow mb-2" style="color:#F2A93B;">Live Opportunities API &amp; Curated Directory</p>
+        <h1 class="mb-2" style="font-size:2.3rem;">Find Your Next Opportunity</h1>
+        <p class="lead-text mb-0">Search and filter real jobs, internships, and co-ops. Results update instantly as you refine your search — save your favorites for later.</p>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block text-center">
+        <img src="images/opportunities-hero.png" alt="Opportunities banner" class="img-fluid hero-banner-img">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== SEARCH & FILTERS ===================== -->
+<section class="section bg-cream pt-4">
+  <div class="container">
+    
+    <!-- Tab Controls: All vs Saved -->
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+      <div class="btn-group" role="group" aria-label="Opportunity view filter">
+        <button type="button" class="btn btn-outline-secondary active btn-amber-active px-4" data-opp-tab="all">
+          <i class="bi bi-briefcase-fill me-1"></i> All Opportunities
+        </button>
+        <button type="button" class="btn btn-outline-secondary px-4" data-opp-tab="saved">
+          <i class="bi bi-bookmark-fill me-1 text-amber"></i> Saved Jobs (<span id="savedJobsCount">0</span>)
+        </button>
+      </div>
+    </div>
+
+    <form id="oppFilterForm" class="form-ccb card-ccb mb-4">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-3">
+          <label for="fKeyword">Keyword</label>
+          <input type="text" class="form-control" id="fKeyword" placeholder="e.g. developer, intern">
+        </div>
+        <div class="col-md-3">
+          <label for="fLocation">Location</label>
+          <select class="form-select" id="fLocation">
+            <option value="">Any location</option>
+            <option value="New York, NY">New York, NY</option>
+            <option value="San Francisco, CA">San Francisco, CA</option>
+            <option value="Chicago, IL">Chicago, IL</option>
+            <option value="Austin, TX">Austin, TX</option>
+            <option value="Boston, MA">Boston, MA</option>
+            <option value="Remote">Flexible / Remote</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="fCategory">Category</label>
+          <select class="form-select" id="fCategory">
+            <option value="">All categories</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="fLevel">Experience Level</label>
+          <select class="form-select" id="fLevel">
+            <option value="">Any level</option>
+            <option value="Internship">Internship</option>
+            <option value="Entry Level">Entry Level</option>
+            <option value="Mid Level">Mid Level</option>
+            <option value="Senior Level">Senior Level</option>
+            <option value="Management">Management</option>
+          </select>
+        </div>
+      </div>
+      <div class="row g-3 align-items-end mt-1">
+        <div class="col-md-3">
+          <label for="fSalary">Minimum Salary Mentioned</label>
+          <select class="form-select" id="fSalary">
+            <option value="0">Any salary</option>
+            <option value="40000">$40,000+</option>
+            <option value="60000">$60,000+</option>
+            <option value="80000">$80,000+</option>
+            <option value="100000">$100,000+</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="fSort">Sort By</label>
+          <select class="form-select" id="fSort">
+            <option value="relevance">Relevance</option>
+            <option value="newest">Newest First</option>
+            <option value="az">Title A–Z</option>
+          </select>
+        </div>
+        <div class="col-md-3 d-flex gap-2">
+          <button type="submit" class="btn btn-ccb-primary flex-fill">
+            <i class="bi bi-search"></i> Search
+          </button>
+          <button type="button" id="fReset" class="btn btn-outline-secondary">Reset</button>
+        </div>
+        <div class="col-md-3 text-md-end">
+          <span class="text-slate small" id="resultsCount"></span>
+        </div>
+      </div>
+    </form>
+
+    <!-- Results -->
+    <div id="oppLoading" class="spinner-ccb"></div>
+    <div id="oppError" class="alert alert-warning d-none"></div>
+    <div id="oppEmpty" class="empty-state d-none">
+      <i class="bi bi-search" style="font-size:2rem;"></i>
+      <p class="mt-2 mb-0">No opportunities matched your search. Try adjusting your filters.</p>
+    </div>
+    <div id="oppGrid" class="row g-4"></div>
+
+    <!-- Pagination -->
+    <nav class="mt-4" aria-label="Opportunities pagination">
+      <ul class="pagination justify-content-center" id="oppPagination"></ul>
+    </nav>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer-ccb">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5">
+        <h6 class="mb-2">Campus Career Hub</h6>
+        <p class="mb-0 small">A student-built platform to discover opportunities, manage your career profile, and grow.</p>
+      </div>
+      <div class="col-md-3">
+        <h6 class="mb-2">Explore</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-1"><a href="index.html">Home</a></li>
+          <li class="mb-1"><a href="opportunities.html">Opportunities</a></li>
+          <li class="mb-1"><a href="my-career.html">My Career</a></li>
+          <li class="mb-1"><a href="contact.html">Contact &amp; Feedback</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h6 class="mb-2">Built By</h6>
+        <ul class="list-unstyled small mb-0">
+          <li class="mb-2">
+            <a class="credit-name" href="https://www.linkedin.com/in/param-patel-6a5568392/" target="_blank" rel="noopener noreferrer">
+              Param Patel <i class="bi bi-linkedin"></i>
+            </a>
+          </li>
+          <li class="mb-2">
+            <a class="credit-name" href="https://www.linkedin.com/in/atharv-patil-276253386/" target="_blank" rel="noopener noreferrer">
+              Atharv Patil <i class="bi bi-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      &copy; <span id="footerYear"></span> Campus Career Hub. Built with HTML, CSS, JavaScript &amp; Bootstrap.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/opportunities.js"></script>
+</body>
+</html>
