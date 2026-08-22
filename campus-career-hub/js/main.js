@@ -48,6 +48,94 @@ const FALLBACK_FEATURED = [
   }
 ];
 
+const platformStats = {
+  opportunities: 500,
+  categories: CCB_CATEGORIES.length,
+  skills: 0,
+  rating: 4.8
+};
+
+let statsChartInstance = null;
+
+function updateStatsChart() {
+  const canvas = document.getElementById('statsChart');
+  if (!canvas || typeof Chart === 'undefined') return;
+
+  const dataValues = [
+    platformStats.opportunities,
+    platformStats.categories,
+    platformStats.skills,
+    platformStats.rating
+  ];
+
+  if (statsChartInstance) {
+    statsChartInstance.data.datasets[0].data = dataValues;
+    statsChartInstance.update();
+    return;
+  }
+
+  const ctx = canvas.getContext('2d');
+  statsChartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Opportunities Available', 'Categories Supported', 'Skills Registered', 'Avg User Rating (/5)'],
+      datasets: [{
+        label: 'Platform Metrics',
+        data: dataValues,
+        backgroundColor: [
+          'rgba(242, 169, 59, 0.85)',
+          'rgba(30, 110, 115, 0.85)',
+          'rgba(59, 130, 246, 0.85)',
+          'rgba(46, 125, 79, 0.85)'
+        ],
+        borderColor: [
+          '#F2A93B',
+          '#1E6E73',
+          '#3B82F6',
+          '#2E7D4F'
+        ],
+        borderWidth: 1.5,
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0B1F3A',
+          titleColor: '#F2A93B',
+          bodyColor: '#FFFDF8',
+          borderColor: '#1E6E73',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: function(context) {
+              const val = context.raw;
+              if (context.dataIndex === 3) {
+                return ` Rating: ${val} / 5 Stars`;
+              }
+              return ` Count: ${val.toLocaleString()}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#F7F4EC', font: { family: 'Inter', size: 12, weight: '500' } },
+          grid: { display: false }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: 'rgba(247, 244, 236, 0.7)', font: { family: 'JetBrains Mono', size: 11 } },
+          grid: { color: 'rgba(255, 255, 255, 0.1)' }
+        }
+      }
+    }
+  });
+}
+
 function starString(rating){
   const r = Math.round(rating);
   return '★'.repeat(r) + '☆'.repeat(5 - r);
@@ -104,19 +192,23 @@ function renderReviews(){
   // average rating stat
   const avg = reviews.length
     ? (reviews.reduce((sum, r) => sum + Number(r.rating || 0), 0) / reviews.length)
-    : 0;
+    : 4.8;
+  platformStats.rating = Number(avg.toFixed(1));
   const statRatingEl = document.getElementById('statRating');
   if (statRatingEl) {
     statRatingEl.textContent = reviews.length ? avg.toFixed(1) + ' / 5' : '—';
   }
+  updateStatsChart();
 }
 
 function renderSkillsStat(){
   const skills = CCBStorage.getSkills();
+  platformStats.skills = skills.length;
   const statSkillsEl = document.getElementById('statSkills');
   if (statSkillsEl) {
     statSkillsEl.textContent = skills.length;
   }
+  updateStatsChart();
 }
 
 function getCompanyBadgeColor(name){
@@ -195,6 +287,8 @@ async function loadFeaturedOpportunities(){
     if (statOppEl) {
       statOppEl.textContent = totalCount ? totalCount.toLocaleString() : '500+';
     }
+    platformStats.opportunities = totalCount || 500;
+    updateStatsChart();
   }catch(err){
     console.warn('Failed to load featured opportunities live from API, using fallback featured dataset:', err);
     if (grid) {
@@ -203,6 +297,8 @@ async function loadFeaturedOpportunities(){
     if (statOppEl) {
       statOppEl.textContent = '500+';
     }
+    platformStats.opportunities = 500;
+    updateStatsChart();
   }finally{
     if (loading) loading.classList.add('d-none');
   }
@@ -210,7 +306,9 @@ async function loadFeaturedOpportunities(){
 
 const statCatEl = document.getElementById('statCategories');
 if (statCatEl) statCatEl.textContent = CCB_CATEGORIES.length;
+platformStats.categories = CCB_CATEGORIES.length;
 
 renderReviews();
 renderSkillsStat();
 loadFeaturedOpportunities();
+updateStatsChart();
